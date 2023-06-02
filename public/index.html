@@ -11,13 +11,13 @@
   <button onclick="post(event)">요청</button>
   <script>
     async function test(){
-      const res = await fetch('http://localhost:3000/test')
+      const res = await fetch('http://localhost:3030/test')
       const data = await res.json()
       console.log(data)
     }
     test()
     async function post(e){
-      const res = await fetch('http://localhost:3000/test',{
+      const res = await fetch('http://localhost:3030/test',{
         method:"POST",
         headers:{
         'Content-Type':'application/json'
