@@ -1,0 +1,163 @@
+{
+  "days": [
+    {
+      "id": 1,
+      "day": 1
+    },
+    {
+      "id": 2,
+      "day": 2
+    },
+    {
+      "id": 3,
+      "day": 3
+    },
+    {
+      "day": 4,
+      "id": 4
+    },
+    {
+      "day": 5,
+      "id": 5
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "day": 1,
+      "eng": "book",
+      "kor": "책",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "day": 2,
+      "eng": "car",
+      "kor": "자동차",
+      "isDone": false
+    },
+    {
+      "day": "3",
+      "eng": "house",
+      "kor": "집",
+      "isDone": false,
+      "id": 8
+    },
+    {
+      "day": "2",
+      "eng": "mouse",
+      "kor": "쥐",
+      "isDone": false,
+      "id": 9
+    },
+    {
+      "day": "4",
+      "eng": "monkey",
+      "kor": "원숭이",
+      "isDone": false,
+      "id": 10
+    },
+    {
+      "day": "4",
+      "eng": "apple",
+      "kor": "사과",
+      "isDone": false,
+      "id": 11
+    },
+    {
+      "day": "3",
+      "eng": "apple",
+      "kor": "사과",
+      "isDone": false,
+      "id": 12
+    }
+  ],
+  "view": [
+    {
+      "id": 1,
+      "userId": "admin",
+      "title": "게시판 제목",
+      "content": "게시판 내용",
+      "date": "2023/05/01"
+    },
+    {
+      "id": 2,
+      "userId": "admin",
+      "title": "새글",
+      "content": "새글쓰기",
+      "date": "2022/04/22"
+    },
+    {
+      "title": "게시판 새글 테스트",
+      "userId": "user01",
+      "content": "user01 post 테스트",
+      "date": "2023-05-31T15:56:02.173Z",
+      "id": 3
+    },
+    {
+      "title": "일기",
+      "userId": "kim",
+      "content": "일기 작성?",
+      "date": "2023-05-31T15:57:05.986Z",
+      "id": 4
+    }
+  ],
+  "reply": [
+    {
+      "id": 1,
+      "viewId": 1,
+      "content": "댓글1",
+      "userId": "admin",
+      "date": ""
+    },
+    {
+      "id": 2,
+      "viewId": 2,
+      "content": "댓글2",
+      "userId": "admin",
+      "date": ""
+    },
+    {
+      "viewId": 1,
+      "content": "asd",
+      "userId": "댓글 관리자",
+      "date": "2023-05-31T13:10:44.043Z",
+      "id": 3
+    },
+    {
+      "viewId": 2,
+      "content": "댓글 테스트 2112\n",
+      "userId": "댓글 관리자",
+      "date": "2023-05-31T15:31:54.516Z",
+      "id": 4
+    },
+    {
+      "viewId": 2,
+      "content": "ㅁㄴㅇㅁㄴㅇ",
+      "userId": "댓글 관리자",
+      "date": "2023-05-31T15:31:59.344Z",
+      "id": 5
+    },
+    {
+      "viewId": 3,
+      "content": "댓글",
+      "userId": "댓글 관리자",
+      "date": "2023-05-31T15:56:37.461Z",
+      "id": 6
+    },
+    {
+      "viewId": 4,
+      "content": "ㄴ마ㅓㅇ린머ㅏㅣㅇ러ㅣㅏㄴㅁㄹ\n\n",
+      "userId": "댓글 관리자",
+      "date": "2023-05-31T15:57:28.267Z",
+      "id": 7
+    }
+  ],
+  "todo": [
+    {
+      "id": 1,
+      "name": "시험접수",
+      "isDone": false
+    }
+  ]
+}

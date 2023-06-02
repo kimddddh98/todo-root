@@ -1,0 +1,20 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+
+  // font-family: $family;
+}
+ul,li,ol{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+button{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
