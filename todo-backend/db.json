@@ -1,0 +1,97 @@
+{
+  "days": [
+    {
+      "id": 1,
+      "day": 1
+    },
+    {
+      "id": 2,
+      "day": 2
+    },
+    {
+      "id": 3,
+      "day": 3
+    },
+    {
+      "day": 4,
+      "id": 4
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "day": 1,
+      "eng": "book",
+      "kor": "책",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "day": 2,
+      "eng": "car",
+      "kor": "자동차",
+      "isDone": false
+    },
+    {
+      "day": "3",
+      "eng": "house",
+      "kor": "집",
+      "isDone": false,
+      "id": 8
+    },
+    {
+      "day": "2",
+      "eng": "mouse",
+      "kor": "쥐",
+      "isDone": false,
+      "id": 9
+    },
+    {
+      "day": "4",
+      "eng": "monkey",
+      "kor": "원숭이",
+      "isDone": false,
+      "id": 10
+    },
+    {
+      "day": "4",
+      "eng": "apple",
+      "kor": "사과",
+      "isDone": false,
+      "id": 11
+    },
+    {
+      "day": "3",
+      "eng": "apple",
+      "kor": "사과",
+      "isDone": false,
+      "id": 12
+    }
+  ],
+  "view": [
+    {
+      "id": 1,
+      "userId": "admin",
+      "title":"게시판 제목",
+      "content":"게시판 내용",
+      "date":""
+    },
+    {
+      "id": 2,
+      "userId": "admin",
+      "title":"게시판 제목",
+      "content":"게시판 내용",
+      "date":""
+    }
+  ],
+  "reply":[
+    {
+      "id":1,
+      "viewId":1,
+      "content":"댓글",
+      "userId": "admin",
+      "date":""
+      
+    }
+  ]
+}
