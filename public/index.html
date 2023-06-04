@@ -8,7 +8,8 @@
 </head>
 <body>
   ttt
-  <button onclick="post(event)">요청</button>
+  <button onclick="post(event)">db user 정보추가</button>
+  <button onclick="login()">로그인 이메일 확인</button>
   <script>
     async function test(){
       const res = await fetch('http://localhost:3030/test')
@@ -23,14 +24,39 @@
         'Content-Type':'application/json'
         },
         body:JSON.stringify({
-          data:"클릭 완료"
+          name:'password4',
+          email:'password4@naver.com',
+          password:'1234560000',
         })
 
       })
       if(res.ok){
         
-        test()
+        // test()
         alert('요청성공')
+      }
+      
+    }
+
+    async function login(e){
+      const res = await fetch('http://localhost:3030/login',{
+        method:"POST",
+        headers:{
+        'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          name:'password4',
+          email:'password4@naver.com',
+          password:'asdasdasd',
+        })
+
+      })
+      if(res.ok){
+        const data = await res.json()
+        data.loginSuccess?alert('로그인성공'):alert('로그인실패')
+        
+        console.log(data)
+        
       }
       
     }
