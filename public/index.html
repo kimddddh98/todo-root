@@ -24,9 +24,9 @@
         'Content-Type':'application/json'
         },
         body:JSON.stringify({
-          name:'password4',
-          email:'password4@naver.com',
-          password:'1234560000',
+          name:'loginTest',
+          email:'loginTest@naver.com',
+          password:'dlfehd5941',
         })
 
       })
@@ -45,16 +45,16 @@
         'Content-Type':'application/json'
         },
         body:JSON.stringify({
-          name:'password4',
-          email:'password4@naver.com',
-          password:'asdasdasd',
+          name:'loginTest',
+          email:'loginTest@naver.com',
+          password:'dlfehd5941',
         })
 
       })
       if(res.ok){
         const data = await res.json()
         data.loginSuccess?alert('로그인성공'):alert('로그인실패')
-        
+
         console.log(data)
         
       }

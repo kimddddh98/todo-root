@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt  = require('jsonwebtoken')
 
 const userSchema = mongoose.Schema({
   name:{
@@ -61,8 +62,26 @@ userSchema.methods.comparePassword= function (inputPassword,cb){
   })
 
 }
-userSchema.methods.generateToken = function(callback){
-  
+userSchema.methods.generateToken = async function(callback){
+  // 토큰 발급
+  var user = this
+  console.log(user._id)
+  var token = jwt.sign(user._id.toHexString(), 'token');
+  user.token = token
+  try{
+    await user.save()
+    callback(null,user)
+  }catch(err){
+    callback(err)
+  }
+ 
+
+  // .then((err,user)=>{
+  //   if(err){
+  //     return callback(err)
+  //   }
+  //   return callback(null,user)
+  // })
 }
 
 

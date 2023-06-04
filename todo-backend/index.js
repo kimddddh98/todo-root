@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const cors = require('cors');
+const cp = require('cookie-parser');
+
 require('dotenv').config();
 
 const {User} = require('./models/User')
@@ -9,7 +11,7 @@ const {User} = require('./models/User')
 
 const mongoose = require('mongoose')
 
-const uri = process.env.
+const uri = process.env.MONGODB_URI
 
 mongoose.connect(uri,{})
 .then(()=>console.log('연결완료'))
@@ -17,7 +19,7 @@ mongoose.connect(uri,{})
 
 app.set('port', process.env.PORT || 3030);
 app.use(cors()).use(express.static(path.join(__dirname, '../public'))).use(express.json()).use(express.urlencoded({extended:true}));
-
+app.use(cp())
 
 
 let node = 'first'
@@ -46,24 +48,39 @@ app.post('/login', async(req,res)=>{
         message:'매칭안됨'
       })
     }
+
     findUser.comparePassword(req.body.password,(err,isMatch)=>{
-      if(!isMatch) 
+      if(!isMatch){
+        return res.json({
+          loginSuccess:false,
+          message:'비밀번호가 틀렸습니다.'
+        }) 
+      }
+      if(isMatch){
         findUser.generateToken((err,user)=>{
-
+          console.log(user)
+          if(err) return res.json({
+            loginSuccess:false,
+            message:'토큰 발급 실패'
+          })
+          
+          res.cookie('x_auth',user.token)
+          .json({
+          loginSuccess:true,
+          message:'토큰 발급 성공'
+          })
+          
         })
-      
-      
-      return res.json({
-        loginSuccess:false,
-        message:'비밀번호가 틀렸습니다.'
-      }) 
-      res.json({
-        loginSuccess:true,
-      })
-
+        // findUser.generateToken((err,user)=>{
+        //   if(err) {
+        //     console.log(err)
+        //     return res.json({data:'토큰발급실패'}).send(err)
+        //   }
+        //   console.log(isMatch)
+        //   return res.json({data:user})
+        // })
+      } 
     })
-
-   
   }catch(err){
     res.json({err})
 
