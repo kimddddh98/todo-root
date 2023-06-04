@@ -2,11 +2,14 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const cors = require('cors');
+require('dotenv').config();
+
 const {User} = require('./models/User')
+
 
 const mongoose = require('mongoose')
 
-const uri = "mongodb+srv://amawang11:hZ3tHtcdsA4SEKNV@kimmongo.gq1uoem.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI
 
 mongoose.connect(uri,{})
 .then(()=>console.log('연결완료'))
