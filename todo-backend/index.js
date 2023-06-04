@@ -20,7 +20,7 @@ mongoose.connect(uri,{})
 .catch(err=>console.log(err))
 
 app.set('port', process.env.PORT || 3030);
-app.use(cors()).use(express.static(path.join(__dirname, '../public'))).use(express.json()).use(express.urlencoded({extended:true}));
+app.use(cors()).use(express.static(path.join(__dirname, '/public'))).use(express.json()).use(express.urlencoded({extended:true}));
 app.use(cp())
 
 
@@ -115,7 +115,7 @@ app.get('/days/:id', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  sendFile(path.join(__dirname, '../public/index.html'))  
+  sendFile(path.join(__dirname, '/public/index.html'))  
 });
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중')
