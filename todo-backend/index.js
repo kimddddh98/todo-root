@@ -90,9 +90,9 @@ app.post('/login', async(req,res)=>{
   }
 
 })
-app.get('/auth', auth,(req, res) => {
-  res.json({data:'testGet'})
-});
+// app.get('/auth', auth,(req, res) => {
+//   res.json({data:'testGet'})
+// });
 
 
 app.get('/test', (req, res) => {
