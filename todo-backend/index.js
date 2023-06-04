@@ -3,16 +3,18 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const cp = require('cookie-parser');
-
 require('dotenv').config();
+const mongoose = require('mongoose')
 
+// user 모델생성
 const {User} = require('./models/User')
 
-
-const mongoose = require('mongoose')
+// 로그인이 되어있는지 체크
+const { auth } = require('./middleware/auto')
 
 const uri = process.env.MONGODB_URI
 
+// db연결
 mongoose.connect(uri,{})
 .then(()=>console.log('연결완료'))
 .catch(err=>console.log(err))
@@ -24,8 +26,13 @@ app.use(cp())
 
 let node = 'first'
 
+
+// 회원가입
+// user 정보 db 저장
 app.post('/test', async(req,res)=>{
+  // req.body 에서 받은 유저 정보를 user 모델에 전달
   const user =  new User(req.body)
+
   try{
     await user.save()
     console.log('저장 후')
@@ -39,8 +46,11 @@ app.post('/test', async(req,res)=>{
 
 })
 
+
+// 로그인 인증
 app.post('/login', async(req,res)=>{
   try{
+    //  db에서 유저 이메일에 맞는정보 찾기
     const findUser =  await User.findOne({email:req.body.email})
     if(findUser===null){
       res.json({
@@ -48,6 +58,7 @@ app.post('/login', async(req,res)=>{
         message:'매칭안됨'
       })
     }
+    // 패스워드 체크
 
     findUser.comparePassword(req.body.password,(err,isMatch)=>{
       if(!isMatch){
@@ -56,14 +67,14 @@ app.post('/login', async(req,res)=>{
           message:'비밀번호가 틀렸습니다.'
         }) 
       }
+      // isMatch 라면 토큰발급
       if(isMatch){
         findUser.generateToken((err,user)=>{
-          console.log(user)
           if(err) return res.json({
             loginSuccess:false,
             message:'토큰 발급 실패'
           })
-          
+          // 쿠키에 토큰저장
           res.cookie('x_auth',user.token)
           .json({
           loginSuccess:true,
@@ -71,14 +82,6 @@ app.post('/login', async(req,res)=>{
           })
           
         })
-        // findUser.generateToken((err,user)=>{
-        //   if(err) {
-        //     console.log(err)
-        //     return res.json({data:'토큰발급실패'}).send(err)
-        //   }
-        //   console.log(isMatch)
-        //   return res.json({data:user})
-        // })
       } 
     })
   }catch(err){
@@ -86,20 +89,10 @@ app.post('/login', async(req,res)=>{
 
   }
 
-  // User.findOne({email:req.body.email},(err,user)=>{
-  //   if(!user){
-  //     return res.json({
-  //       loginSuccess:false,
-  //       message:'매칭안됨'
-  //     })
-  //   }
-  //   return res.json({
-  //     loginSuccess:true,
-  //   })
-  // }) 
-
 })
-
+app.get('/auth', auth,(req, res) => {
+  res.json({data:'testGet'})
+});
 
 
 app.get('/test', (req, res) => {
