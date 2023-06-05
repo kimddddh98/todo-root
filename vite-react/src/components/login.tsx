@@ -1,4 +1,3 @@
-import { ENV } from '@/hooks/useEnv'
 import {  useRef } from 'react'
 import axios from 'axios'
 
@@ -9,7 +8,7 @@ export default function DayList(){
 
 
   async function userCheck(id:string,password:string) {
-    const res = await axios.post(`${ENV}/login`,{
+    const res = await axios.post(`api/login`,{
       email: id,
       password:password
     })
@@ -20,7 +19,7 @@ export default function DayList(){
     <>
     <form>
       <label>
-        email <input type="text" ref={id}/>
+        email asdasd <input type="text" ref={id}/>
       </label>
       <label>
         password <input type="password" ref={password}/>

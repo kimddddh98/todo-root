@@ -1,5 +1,5 @@
 // import db from '@/db/data.json'
-import { ENV } from '@/hooks/useEnv'
+// import { ENV } from '@/hooks/useEnv'
 import { useEffect, useState } from 'react'
 
 // import useFetch from '@/hooks/useFetch'
@@ -30,15 +30,15 @@ export default function DayList(){
   const [data,setData] = useState<MongoUser[]>([])
   
   async function call() {
-    const res = await axios.get(`${ENV}/test`)
+    const res = await axios.get(`api/test`)
     setData(res.data)
   }
   useEffect(()=>{
     call()
   },[])
-
+  
   async function userAdd() {
-    const res = await axios.post(`${ENV}/test`,{
+    const res = await axios.post(`api/test`,{
       name:'react',
       email:'react@google.com',
       password:'dlfehd5941'
@@ -46,7 +46,7 @@ export default function DayList(){
     console.log(res.data)
   }
   async function userCheck(db:MongoUser) {
-    const res = await axios.post(`${ENV}/login`,{
+    const res = await axios.post(`api/login`,{
       name:db.name,
       email: db.email,
       password:'dlfehd5941'
