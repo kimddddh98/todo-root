@@ -5,6 +5,9 @@ import {resolve} from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    outDir: '../todo-backend/dist'
+  },
   resolve:{
     alias:[
       { find: '@src', replacement: resolve(__dirname, 'src') },

@@ -1,19 +1,21 @@
 // import db from '@/db/data.json'
 import { ENV } from '@/hooks/useEnv'
 import useFetch from '@/hooks/useFetch'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 interface Days{
-  id:number,
-  day:number
+  // id:number,
+  // day:number
+  data:string
 }
 export default function DayList(){
-  const days:Days[]= useFetch(ENV+'/days')
+  const days:Days[]= useFetch(ENV+'/test')
   
-  console.log(ENV)
+  console.log(days)
   
   return(
     <>
-      할일목록
+    테스트
+      {/* 할일목록
       {days.length===0&&<span>loading..</span>}
       <ul className="list_day">
         {
@@ -24,7 +26,7 @@ export default function DayList(){
               </li>
           ))
         }
-      </ul>
+      </ul> */}
     </>
   )
 }
