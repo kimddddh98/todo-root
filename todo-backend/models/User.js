@@ -60,12 +60,10 @@ userSchema.methods.comparePassword= function (inputPassword,cb){
     if(err) return cb(err)
     cb(null,isMatch)
   })
-
 }
 userSchema.methods.generateToken = async function(callback){
   // 토큰 발급
   var user = this
-  console.log(user._id)
   var token = jwt.sign(user._id.toHexString(), 'token');
   user.token = token
   try{
@@ -74,14 +72,6 @@ userSchema.methods.generateToken = async function(callback){
   }catch(err){
     callback(err)
   }
- 
-
-  // .then((err,user)=>{
-  //   if(err){
-  //     return callback(err)
-  //   }
-  //   return callback(null,user)
-  // })
 }
 
 

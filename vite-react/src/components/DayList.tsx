@@ -27,49 +27,45 @@ interface MongoUser{
 }
 export default function DayList(){
   // const data:MongoUser[] = call()
-  const [data,setData] = useState<MongoUser[]>([])
+  // const [data,setData] = useState<MongoUser[]>([])
   
-  async function call() {
-    const res = await axios.get(`api/test`)
-    setData(res.data)
-  }
-  useEffect(()=>{
-    call()
-  },[])
+  // async function call() {
+  //   const res = await axios.get(`api/test`)
+  //   setData(res.data)
+  // }
+  // useEffect(()=>{
+  //   call()
+  // },[])
   
-  async function userAdd() {
-    const res = await axios.post(`api/test`,{
-      name:'react',
-      email:'react@google.com',
-      password:'dlfehd5941'
-    })
-    console.log(res.data)
-  }
-  async function userCheck(db:MongoUser) {
-    const res = await axios.post(`api/login`,{
-      name:db.name,
-      email: db.email,
-      password:'dlfehd5941'
-    })
-    console.log(res.data)
-  } 
+  // async function userAdd() {
+  //   const res = await axios.post(`api/test`,{
+  //     name:'react',
+  //     email:'react@google.com',
+  //     password:'dlfehd5941'
+  //   })
+  //   console.log(res.data)
+  // }
+  // async function userCheck(db:MongoUser) {
+  //   const res = await axios.post(`api/login`,{
+  //     name:db.name,
+  //     email: db.email,
+  //     password:'dlfehd5941'
+  //   })
+  //   if(res.data.loginSuccess){
+  //     console.log('로그인성공')
+  //   }
+    
+  //   console.log(res.data)
+  // } 
   
   return(
     <>
-    <ul>
-      {data.map(db=>(
-        <li key={db._id} >
-          {db.email}
-          {db.__v}
-          <button onClick={()=>userCheck(db)}>로그인 체크</button>
-        </li>
-      ))}
-    </ul>
-    <button onClick={userAdd}>유저 추가</button>
+  
+    {/* <button onClick={}></button> */}
     <Link to='/login'>로그인</Link>
     {/* 테스트 */}
-    {}
-      {/* 할일목록
+    {/* {}
+      할일목록
       {days.length===0&&<span>loading..</span>}
       <ul className="list_day">
         {
