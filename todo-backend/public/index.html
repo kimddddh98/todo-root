@@ -1,66 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  ttt
-  <button onclick="post(event)">db user 정보추가</button>
-  <button onclick="login()">로그인 이메일 확인</button>
-  <script>
-    async function test(){
-      const res = await fetch('http://localhost:3030/test')
-      const data = await res.json()
-      console.log(data)
-    }
-    // test()
-    async function post(e){
-      const res = await fetch('https://nice-bebe-kimddddh98.koyeb.app/test',{
-        method:"POST",
-        headers:{
-        'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-          name:'koyeb',
-          email:'koyeb@naver.com',
-          password:'koyeb12345',
-        })
-
-      })
-      if(res.ok){
-        
-        // test()
-        alert('요청성공')
-      }
-      
-    }
-
-    async function login(e){
-      const res = await fetch('https://nice-bebe-kimddddh98.koyeb.app/login',{
-        method:"POST",
-        headers:{
-        'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-          name:'koyeb',
-          email:'koyeb@naver.com',
-          password:'koyeb12345',
-        })
-
-      })
-      if(res.ok){
-        const data = await res.json()
-        data.loginSuccess?alert('로그인성공'):alert('로그인실패')
-
-        console.log(data)
-        
-      }
-      
-    }
-  </script>  
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script type="module" crossorigin src="/assets/index-13e84651.js"></script>
+    <link rel="stylesheet" href="/assets/index-ec24eb87.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+  </body>
 </html>
