@@ -13,29 +13,36 @@ import axios from 'axios'
 
 // }
 
-interface MongoUser{
+interface Board{
   name:string
-  email:string
-  password:string
-  lastname?:string
-  role:number
-  image?:string
-  token?:string
-  tokenExp?:string
+  title:string
+  content:string
   _id?:string
   __v?:any
 }
+// interface MongoUser{
+//   name:string
+//   email:string
+//   password:string
+//   lastname?:string
+//   role:number
+//   image?:string
+//   token?:string
+//   tokenExp?:string
+//   _id?:string
+//   __v?:any
+// }
 export default function DayList(){
   // const data:MongoUser[] = call()
-  // const [data,setData] = useState<MongoUser[]>([])
-  
-  // async function call() {
-  //   const res = await axios.get(`api/test`)
-  //   setData(res.data)
-  // }
-  // useEffect(()=>{
-  //   call()
-  // },[])
+  const [data,setData] = useState<Board[]>([])
+  console.log(data)
+  async function call() {
+    const res = await axios.post(`api/board`)
+    setData(res.data)
+  }
+  useEffect(()=>{
+    call()
+  },[])
   
   // async function userAdd() {
   //   const res = await axios.post(`api/test`,{
@@ -63,6 +70,14 @@ export default function DayList(){
   
     {/* <button onClick={}></button> */}
     <Link to='/login'>로그인</Link>
+    <ul>
+      {data.map(board=>(
+        <li key={board._id}>
+          {board.title}<br></br>
+          {board.content}<br></br>
+        </li>
+      ))}
+    </ul>
     {/* 테스트 */}
     {/* {}
       할일목록

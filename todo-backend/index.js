@@ -97,6 +97,22 @@ app.post('/board/write', async (req, res) => {
   }
 
 });
+app.post('/board', async (req, res) => {
+  // const board = new Board(req.body)
+  try{
+    const boardAll =  await Board.find()
+
+    return res.status(200).json(
+      boardAll
+    )
+  }catch(err){
+    return res.json({
+      success:false,
+      message:err
+    })
+  }
+
+});
 
 app.get('/test', async (req, res) => {
   const findUser =  await User.find()

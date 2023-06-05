@@ -4,7 +4,6 @@ export default function Login(){
   const id = useRef<HTMLInputElement>(null)
   const password = useRef<HTMLInputElement>(null)
 
-
   async function userCheck(id:string,password:string) {
     const res = await axios.post(`/api/login`,{
       email: id,
@@ -39,7 +38,7 @@ export default function Login(){
       </label>
     </form>
 
-    <button type='button' onClick={()=>userCheck(id.current!.value,password.current!.value)}>로그인</button>
+    <button type='button' onClick={()=>userCheck(id.current!.value,password.current!.value)}>로그asd인</button>
     <button type='button' onClick={()=>write()}>글 asd작sdd성 </button>
 
 

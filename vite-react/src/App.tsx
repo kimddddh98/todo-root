@@ -27,7 +27,6 @@ function App() {
           </Route>
           <Route path='/create_word' element={<CreateWord/>}/>
           <Route path='/create_day' element={<CreateDay/>}/>
-          
           <Route path='/todo' element={<Todo/>}/>
           <Route path='/todo/:id' element={<TodoDetail/>}/>
           <Route path='/create_todo' element={<CreateTodo/>}/>
