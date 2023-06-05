@@ -1,10 +1,14 @@
-import { defineConfig } from 'vite'
+import { defineConfig  } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import {resolve} from 'path'
 
+
 // https://vitejs.dev/config/
+
 export default defineConfig({
+  // process.env = {...process.env, ...loadEnv(mode, process.cwd())};
+  
   build: {
     outDir: '../todo-backend/public'
   },
@@ -21,7 +25,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3030',
+        target:  process.env.PORT || 'http://localhost:3030',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
         secure: false,
