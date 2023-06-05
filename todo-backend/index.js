@@ -73,12 +73,14 @@ app.post('/login', async(req,res)=>{
           if(err) return res.json({
             loginSuccess:false,
             message:'토큰 발급 실패'
+            
           })
           // 쿠키에 토큰저장
           res.cookie('x_auth',user.token)
           .json({
           loginSuccess:true,
-          message:'토큰 발급 성공'
+          message:'토큰 발급 성공',
+          token:user.token
           })
           
         })
@@ -116,8 +118,8 @@ app.get('/days/:id', (req, res) => {
   res.json(data)
 });
 
-app.get('/', (req, res) => {
-  sendFile(path.join(__dirname, '/public/index.html'))  
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/index.html'))  
 });
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중')

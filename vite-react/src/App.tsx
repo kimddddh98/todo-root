@@ -11,6 +11,7 @@ import Todo from './components/Todo'
 import CreateTodo from './components/CreateTodo'
 import CreateDate from './components/CreateDate'
 import TodoDetail from './components/TodoDetail'
+import Login from './components/login'
 
 function App() {
   console.table(import.meta.env)
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Header></Header>
         <Routes>
+
           <Route path='/' element={<DayList />}>
           </Route>
           <Route path='/day/:day' element={<Day/>}> 
@@ -30,6 +32,8 @@ function App() {
           <Route path='/todo/:id' element={<TodoDetail/>}/>
           <Route path='/create_todo' element={<CreateTodo/>}/>
           <Route path='/create_date' element={<CreateDate/>}/>
+          <Route path='/login' element={<Login/>}/>
+
           <Route path="*" element={<EmptyPage/>} />
         </Routes>
       </div>
