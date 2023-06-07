@@ -3,7 +3,6 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const cp = require('cookie-parser');
-
 require('dotenv').config();
 const mongoose = require('mongoose')
 
@@ -11,7 +10,7 @@ const mongoose = require('mongoose')
 const {User} = require('./models/User')
 const {Board} = require('./models/Board')
 // 로그인이 되어있는지 체크
-const { auth } = require('./middleware/auto')
+const { auth } = require('./middleware/auth')
 
 const uri = process.env.MONGODB_URI
 
@@ -48,7 +47,7 @@ app.post('/test', async(req,res)=>{
 })
 
 
-// 로그인 인증
+// 로그인 , 맞으면 토큰발급
 app.post('/login', async(req,res)=>{
   try{
     //  db에서 유저 이메일에 맞는정보 찾기
@@ -121,10 +120,32 @@ app.post('/board', async (req, res) => {
 
 });
 
+
+app.get('/auth',auth, (req,res)=>{
+  if(req.userInfo){
+    res
+  // .cookie('x_auth',req.token)
+  .json({
+    name:req.userInfo.name,
+    email:req.userInfo.email
+  })
+  }
+  
+})
+app.get('/logout',auth,async (req,res)=>{
+  try{
+    await User.findOneAndUpdate({_id:req.userInfo._id},{token:""})
+    res.json({success:true})
+  }catch(err){
+    res.json({success:false})
+  }
+})
+
 app.get('/test', async (req, res) => {
   const findUser =  await User.find()
   res.json(findUser)
 });
+
 
 
 // 리액트 라우터로 

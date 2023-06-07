@@ -2,35 +2,8 @@
 // import { ENV } from '@/hooks/useEnv'
 import { useEffect, useState } from 'react'
 import api  from '@/core'
-// import useFetch from '@/hooks/useFetch'
 import {Link} from 'react-router-dom'
-// interface Days{
-//   // id:number,
-//   // day:number
-//   // data:string
 
-
-// }
-
-interface Board{
-  name:string
-  title:string
-  content:string
-  _id?:string
-  __v?:any
-}
-// interface MongoUser{
-//   name:string
-//   email:string
-//   password:string
-//   lastname?:string
-//   role:number
-//   image?:string
-//   token?:string
-//   tokenExp?:string
-//   _id?:string
-//   __v?:any
-// }
 export default function DayList(){
   // const data:MongoUser[] = call()
   const [data,setData] = useState<Board[]>([])
@@ -44,6 +17,16 @@ export default function DayList(){
     call()
   },[])
   
+  const authCheck =  async() => {
+    const res = await api.get('/auth')
+    console.log(res.data)
+  }
+
+  const logout =  async() => {
+    const res = await api.get('/logout')
+    console.log(res.data)
+  }
+
   // async function userAdd() {
   //   const res = await axios.post(`api/test`,{
   //     name:'react',
@@ -78,6 +61,13 @@ export default function DayList(){
         </li>
       ))}
     </ul>
+    <button onClick={authCheck}>
+      auth 체크
+    </button>
+
+    <button onClick={logout}>
+      로그아웃
+    </button>
     {/* 테스트 */}
     {/* {}
       할일목록

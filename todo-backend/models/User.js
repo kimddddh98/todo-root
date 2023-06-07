@@ -73,6 +73,23 @@ userSchema.methods.generateToken = async function(callback){
     callback(err)
   }
 }
+userSchema.statics.findByToken = function(token,auth){
+  var user = this
+  // user._id
+  jwt.verify(token,'token',async (err,decode)=> {
+    try{
+      const userInfo = await  user.findOne({
+        '_id':decode, 
+        'token':token
+      })
+      auth(null,userInfo)
+
+    }catch(err){
+      auth(err)
+    }
+
+  })
+}
 
 
 const User = mongoose.model('first',userSchema)
