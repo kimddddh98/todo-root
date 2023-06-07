@@ -1,11 +1,11 @@
 import { useRef } from 'react'
-import axios from 'axios'
+import api from '@/core'
 export default function Login(){
   const id = useRef<HTMLInputElement>(null)
   const password = useRef<HTMLInputElement>(null)
 
   async function userCheck(id:string,password:string) {
-    const res = await axios.post(`/api/login`,{
+    const res = await api.post(`/login`,{
       email: id,
       password:password
     })
@@ -16,7 +16,7 @@ export default function Login(){
   } 
 
   async function write() {
-    const res = await axios.post(`/api/board/write`,{
+    const res = await api.post(`/board/write`,{
       name:'username2',
       title:'글제목 테스트2',
       content:'글 내용 테스트2'

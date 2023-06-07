@@ -3,6 +3,14 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const cp = require('cookie-parser');
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+// app.use(
+//   '/api',
+//   createProxyMiddleware({
+//     target: ' http://localhost:3030/', // 실제 API 서버의 주소로 대체
+//     changeOrigin: true,
+//   })
+// );
 require('dotenv').config();
 const mongoose = require('mongoose')
 
@@ -20,8 +28,14 @@ mongoose.connect(uri,{})
 .catch(err=>console.log(err))
 
 app.set('port', process.env.PORT || 3030);
-app.use(cors()).use(express.static(path.join(__dirname, '/public'))).use(express.json()).use(express.urlencoded({extended:true}));
-app.use(cp())
+
+app.use(cp()).use(express.json()).use(express.urlencoded({extended:true}));
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.use(express.static(path.join(__dirname, '/public')))
+
 
 
 // 회원가입

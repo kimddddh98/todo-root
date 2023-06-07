@@ -1,7 +1,7 @@
 // import db from '@/db/data.json'
 // import { ENV } from '@/hooks/useEnv'
 import { useEffect, useState } from 'react'
-
+import api  from '@/core'
 // import useFetch from '@/hooks/useFetch'
 import {Link} from 'react-router-dom'
 // interface Days{
@@ -9,7 +9,6 @@ import {Link} from 'react-router-dom'
 //   // day:number
 //   // data:string
 
-import axios from 'axios'
 
 // }
 
@@ -37,7 +36,8 @@ export default function DayList(){
   const [data,setData] = useState<Board[]>([])
   console.log(data)
   async function call() {
-    const res = await axios.post(`api/board`)
+    const res = await api.post(`/board`)
+
     setData(res.data)
   }
   useEffect(()=>{
