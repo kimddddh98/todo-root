@@ -1,7 +1,8 @@
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
+const url = import.meta.env.VITE_BASE_URL
 const api = axios.create({
-  baseURL: 'http://localhost:3030', // API의 기본 URL 설정
+  baseURL: url,
   withCredentials: true,
 });
 

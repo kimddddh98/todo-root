@@ -3,14 +3,7 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 const cp = require('cookie-parser');
-// const { createProxyMiddleware } = require('http-proxy-middleware');
-// app.use(
-//   '/api',
-//   createProxyMiddleware({
-//     target: ' http://localhost:3030/', // 실제 API 서버의 주소로 대체
-//     changeOrigin: true,
-//   })
-// );
+
 require('dotenv').config();
 const mongoose = require('mongoose')
 
