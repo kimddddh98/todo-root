@@ -27,14 +27,14 @@ export default function DayList(){
     console.log(res.data)
   }
 
-  // async function userAdd() {
-  //   const res = await axios.post(`api/test`,{
-  //     name:'react',
-  //     email:'react@google.com',
-  //     password:'dlfehd5941'
-  //   })
-  //   console.log(res.data)
-  // }
+  async function userAdd() {
+    const res = await api.post(`/test`,{
+      name:'add',
+      email:'asdasd@naver.com',
+      password:'dlfehd5941'
+    })
+    console.log(res.data)
+  }
   // async function userCheck(db:MongoUser) {
   //   const res = await axios.post(`api/login`,{
   //     name:db.name,
@@ -67,6 +67,9 @@ export default function DayList(){
 
     <button onClick={logout}>
       로그아웃
+    </button>
+    <button onClick={userAdd}>
+      유저추가
     </button>
     {/* 테스트 */}
     {/* {}

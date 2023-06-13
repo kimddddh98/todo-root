@@ -21,7 +21,6 @@ function App() {
       <div className="App">
         <Header></Header>
         <Routes>
-
           <Route path='/' element={<DayList />}>
           </Route>
           <Route path='/day/:day' element={<Day/>}> 

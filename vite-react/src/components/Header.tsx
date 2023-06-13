@@ -1,15 +1,20 @@
 import {Link, useLocation,} from 'react-router-dom'
 
 export default function Header(){
-  // const 
-  // console.log(useParams())
   const path = useLocation().pathname
-
-  // console.log(path)
+  const isLogin = false 
   return(
     <>
       <header>
-        <div className="header">
+        <nav className='header_top'>
+          <Link to="/user">마이페이지</Link>
+          <Link to="/board">고객센터</Link>
+          <Link to="/login">로그인</Link>
+        </nav>
+        <nav className='header_bottom'>
+          
+        </nav>
+        {/* <div className="header">
           <h1>
             <Link to="/">영단어</Link>
           </h1>
@@ -20,11 +25,10 @@ export default function Header(){
           <h1>
             <Link to="/todo">투두리스트</Link>
           </h1>
-
-        </div>
+        </div> */}
 
       </header>
-      <div className="menu">
+      {/* <div className="menu">
         {path==='/'?
         (<>
           <Link to='create_word'>단어추가</Link>
@@ -35,7 +39,7 @@ export default function Header(){
         <Link to='create_date'>일정추가</Link>
         </>)}
       
-      </div>
+      </div> */}
 
     </>
   )

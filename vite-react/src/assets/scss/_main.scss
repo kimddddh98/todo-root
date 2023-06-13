@@ -1,23 +1,5 @@
-html,body,#root,.App{
-  width: 100%;
-}
 
-header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  height: 80px;
-}
-.header{
-  h1{
-    &:hover{
-      a{
-        color: $mainColor;
-      }
-    }
-  }
-}
+
 .menu{
   display: flex;
   gap: 20px;
