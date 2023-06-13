@@ -4,8 +4,14 @@ import { useEffect, useState } from 'react'
 import api  from '@/core'
 import {Link} from 'react-router-dom'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '@/redux/counterSlice'
+
 export default function DayList(){
   // const data:MongoUser[] = call()
+  const count = useSelector((state: any) => state.counter.value)
+  const dispatch = useDispatch()
+
   const [data,setData] = useState<Board[]>([])
   console.log(data)
   async function call() {
@@ -71,6 +77,8 @@ export default function DayList(){
     <button onClick={userAdd}>
       유저추가
     </button>
+        <br />
+    <button onClick={()=>dispatch(increment())}>{count} 증가</button>
     {/* 테스트 */}
     {/* {}
       할일목록
