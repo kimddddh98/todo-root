@@ -5,11 +5,19 @@ import api  from '@/core'
 import {Link} from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '@/redux/counterSlice'
+import { decrement, increment ,incrementByAmount } from '@/redux/counterSlice'
+import { valueChange,addWord,asyncValue } from '@/redux/postListSlice'
+// import {} from '@/redux/postLIstSlice'
+import { RootState } from '@/redux'
 
 export default function DayList(){
   // const data:MongoUser[] = call()
-  const count = useSelector((state: any) => state.counter.value)
+  const postRedux = useSelector((state:RootState)=>state.post.value)
+
+  const count = useSelector((state:RootState) => {
+    console.log(state)
+    return state.counter.value
+  })
   const dispatch = useDispatch()
 
   const [data,setData] = useState<Board[]>([])
@@ -79,6 +87,17 @@ export default function DayList(){
     </button>
         <br />
     <button onClick={()=>dispatch(increment())}>{count} 증가</button>
+
+    <button onClick={()=>dispatch(incrementByAmount(3))}>넣는숫자만큼 증가</button>
+
+    <div>
+
+      새로 만든 리듀서
+      {postRedux}
+      <button onClick={()=>{dispatch(addWord('postListSlice addWork action'))}}>밸류 체인지</button>
+      <br />
+      <button onClick={()=>{dispatch(asyncValue())}}>보드 리듀서</button>
+    </div>
     {/* 테스트 */}
     {/* {}
       할일목록
