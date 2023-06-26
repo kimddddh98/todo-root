@@ -10,6 +10,7 @@ export default function Header(){
           <Link to="/user">마이페이지</Link>
           <Link to="/board">고객센터</Link>
           <Link to="/login">로그인</Link>
+          <Link to="/redux">리덕스</Link>
         </nav>
         <nav className='header_bottom'>
           
