@@ -8,9 +8,8 @@ export const asyncValue = createAsyncThunk(
   'postListSlice/asyncValue',
   async (payload, { rejectWithValue })=>{
     try{
-      const {data} = await api.post('/board')
-      return data
-
+      const res = await api.post('/board')
+      return res.data
 
     }catch(err){
       const error = rejectWithValue(err)
@@ -24,11 +23,15 @@ export const asyncValue = createAsyncThunk(
 
 
 interface InitialState{
-  value:string
+  // value:string
   loading:boolean,
-  data : Board[]
+  value : Board[]
 } 
-const initialState = {value:'새로만든리듀서',loading:false,data:[]} as InitialState 
+const initialState = {
+  value:[],
+  loading:false
+} as InitialState 
+
 const postList = createSlice({
   initialState,
   name:'postList',
@@ -36,12 +39,12 @@ const postList = createSlice({
     builder.addCase(asyncValue.pending,(state)=>{
       state.loading = true
     })
-    builder.addCase(asyncValue.fulfilled,(state,action:PayloadAction<InitialState>)=>{
+    builder.addCase(asyncValue.fulfilled,(state,action:PayloadAction<Board[]>)=>{
       state.loading = false
-      state.data = action.payload.data
-     
-      // console.log('async')
+      state.value = action.payload
       // state.data = action.payload
+      console.log(action)
+    
     })
     builder.addCase(asyncValue.rejected,(state)=>{
       state.loading = false
@@ -50,10 +53,10 @@ const postList = createSlice({
   },
   reducers:{
     valueChange(state){
-      state.value = 'b'
+      // state.value = 'b'
     },
     addWord(state,action:PayloadAction<string>){
-      state.value += action.payload 
+      // state.value += action.payload 
     }
   },
   

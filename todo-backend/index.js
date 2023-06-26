@@ -120,6 +120,22 @@ app.post('/board', async (req, res) => {
 
 });
 
+app.post('/board/length', async (req, res) => {
+  // const board = new Board(req.body)
+  try{
+    const boardLength =  await Board.countDocuments()
+    return res.status(200).json(
+      boardLength
+    )
+  }catch(err){
+    return res.json({
+      success:false,
+      message:err
+    })
+  }
+
+});
+
 
 app.get('/auth',auth, (req,res)=>{
   if(req.userInfo){

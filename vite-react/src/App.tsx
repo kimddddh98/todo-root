@@ -12,6 +12,8 @@ import CreateTodo from './components/CreateTodo'
 import CreateDate from './components/CreateDate'
 import TodoDetail from './components/TodoDetail'
 import Login from './components/Login'
+import ReduxIndex from './pages/ReduxIndex'
+
 // import Login from './components/Login'
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
           <Route path='/create_todo' element={<CreateTodo/>}/>
           <Route path='/create_date' element={<CreateDate/>}/>
           <Route path='/login' element={<Login/>}/>
-
+          <Route path='/redux' element={<ReduxIndex/>}/>
           <Route path="*" element={<EmptyPage/>} />
         </Routes>
       </div>
