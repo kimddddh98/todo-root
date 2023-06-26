@@ -1,5 +1,5 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit'
+// import type { PayloadAction } from '@reduxjs/toolkit'
 import api  from '@/core'
 
 
@@ -39,6 +39,7 @@ const postList = createSlice({
     builder.addCase(asyncValue.fulfilled,(state,action:PayloadAction<InitialState>)=>{
       state.loading = false
       state.data = action.payload.data
+     
       // console.log('async')
       // state.data = action.payload
     })

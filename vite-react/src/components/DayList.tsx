@@ -9,6 +9,7 @@ import { decrement, increment ,incrementByAmount } from '@/redux/counterSlice'
 import { valueChange,addWord,asyncValue } from '@/redux/postListSlice'
 // import {} from '@/redux/postLIstSlice'
 import { RootState } from '@/redux'
+import type { AppDispatch} from '@/redux'
 
 export default function DayList(){
   // const data:MongoUser[] = call()
@@ -18,7 +19,7 @@ export default function DayList(){
     console.log(state)
     return state.counter.value
   })
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
   const [data,setData] = useState<Board[]>([])
   console.log(data)
