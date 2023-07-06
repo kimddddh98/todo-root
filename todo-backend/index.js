@@ -5,12 +5,12 @@ const cors = require('cors');
 const cp = require('cookie-parser');
 require('dotenv').config();
 const mongoose = require('mongoose')
+const BoardRouter = require('./routes/Board')
+const RouterIndex = require('./routes')
 
 // user 모델생성
-const {User} = require('./models/User')
-const {Board} = require('./models/Board')
+
 // 로그인이 되어있는지 체크
-const { auth } = require('./middleware/auth')
 
 const uri = process.env.MONGODB_URI
 
@@ -30,137 +30,11 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 
 
+app.use('/',RouterIndex)
+
 // 회원가입
 // user 정보 db 저장
-app.post('/test', async(req,res)=>{
-  // req.body 에서 받은 유저 정보를 user 모델에 전달 후 저장
-  const user =  new User(req.body)
-  try{
-    await user.save()
-    console.log('저장 후')
-    res.status(200).json({
-      success:true
-    })
-  }catch(err){
-    return res.json({success:false,err})
-  }
-})
 
-
-// 로그인 , 맞으면 토큰발급
-app.post('/login', async(req,res)=>{
-  try{
-    //  db에서 유저 이메일에 맞는정보 찾기
-    const findUser =  await User.findOne({email:req.body.email})
-    if(findUser===null){
-      res.json({
-        loginSuccess:false,
-        message:'매칭안됨'
-      })
-    }
-    // 패스워드 체크
-    findUser.comparePassword(req.body.password,(err,isMatch)=>{
-      if(!isMatch){
-        return res.json({
-          loginSuccess:false,
-          message:'비밀번호가 틀렸습니다.'
-        }) 
-      }
-      // isMatch 라면 토큰발급
-      if(isMatch){
-        findUser.generateToken((err,user)=>{
-          if(err) return res.json({
-            loginSuccess:false,
-            message:'토큰 발급 실패'
-          })
-          // 쿠키에 토큰저장
-          res.cookie('x_auth',user.token)
-          .json({
-          loginSuccess:true,
-          message:'토큰 발급 성공',
-          })
-          
-        })
-      } 
-    })
-  }catch(err){
-    res.json({err})
-  }
-})
-app.post('/board/write', async (req, res) => {
-  const board = new Board(req.body)
-  try{
-    await board.save()
-    return res.status(200).json({
-      success:true,
-      message:'저장성공'
-    })
-  }catch(err){
-    return res.json({
-      success:false,
-      message:err
-    })
-  }
-
-});
-app.post('/board', async (req, res) => {
-  // const board = new Board(req.body)
-  try{
-    const boardAll =  await Board.find()
-
-    return res.status(200).json(
-      boardAll
-    )
-  }catch(err){
-    return res.json({
-      success:false,
-      message:err
-    })
-  }
-
-});
-
-app.post('/board/length', async (req, res) => {
-  // const board = new Board(req.body)
-  try{
-    const boardLength =  await Board.countDocuments()
-    return res.status(200).json(
-      boardLength
-    )
-  }catch(err){
-    return res.json({
-      success:false,
-      message:err
-    })
-  }
-
-});
-
-
-app.get('/auth',auth, (req,res)=>{
-  if(req.userInfo){
-    res
-  // .cookie('x_auth',req.token)
-  .json({
-    name:req.userInfo.name,
-    email:req.userInfo.email
-  })
-  }
-  
-})
-app.get('/logout',auth,async (req,res)=>{
-  try{
-    await User.findOneAndUpdate({_id:req.userInfo._id},{token:""})
-    res.json({success:true})
-  }catch(err){
-    res.json({success:false})
-  }
-})
-
-app.get('/test', async (req, res) => {
-  const findUser =  await User.find()
-  res.json(findUser)
-});
 
 
 
