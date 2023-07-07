@@ -5,10 +5,8 @@ const cors = require('cors');
 const cp = require('cookie-parser');
 require('dotenv').config();
 const mongoose = require('mongoose')
-const BoardRouter = require('./routes/Board')
 const RouterIndex = require('./routes')
 
-// user 모델생성
 
 // 로그인이 되어있는지 체크
 

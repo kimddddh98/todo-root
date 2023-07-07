@@ -1,4 +1,4 @@
 /// <reference types="vite/client" />
 interface Env{
-  readonly VITE_BASE_URL :string
+  readonly VITE_API_URL :string
 }

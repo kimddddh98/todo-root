@@ -1,14 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
-const {User} = require('../models/User')
+const { User } = require('../models/User')
 const { auth } = require('../middleware/auth')
 
-
+const AuthRouter = require('./Auth')
 const BoardRouter = require('./Board')
 
-
+// board 요청
 router.use('/board',BoardRouter)
+
+// auth 요창
+router.use('/auth', AuthRouter)
+
 
 router.get('/test', async (req, res) => {
   const findUser =  await User.find()
@@ -72,19 +76,6 @@ router.post('/login', async(req,res)=>{
 // app.use('/board')
 
 
-
-
-router.get('/auth',auth, (req,res)=>{
-  if(req.userInfo){
-    res
-  // .cookie('x_auth',req.token)
-  .json({
-    name:req.userInfo.name,
-    email:req.userInfo.email
-  })
-  }
-  
-})
 router.get('/logout',auth,async (req,res)=>{
   try{
     await User.findOneAndUpdate({_id:req.userInfo._id},{token:""})

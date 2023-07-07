@@ -1,5 +1,5 @@
-import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 import api  from '@/core'
 
 
@@ -9,6 +9,7 @@ export const asyncValue = createAsyncThunk(
   async (payload, { rejectWithValue })=>{
     try{
       const res = await api.post('/board')
+      console.log(res.data)
       return res.data
 
     }catch(err){
@@ -18,8 +19,6 @@ export const asyncValue = createAsyncThunk(
     // return data.data
   }
 )
-
-
 
 
 interface InitialState{
@@ -42,9 +41,6 @@ const postList = createSlice({
     builder.addCase(asyncValue.fulfilled,(state,action:PayloadAction<Board[]>)=>{
       state.loading = false
       state.value = action.payload
-      // state.data = action.payload
-      console.log(action)
-    
     })
     builder.addCase(asyncValue.rejected,(state)=>{
       state.loading = false

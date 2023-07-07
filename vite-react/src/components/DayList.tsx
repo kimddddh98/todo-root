@@ -94,7 +94,6 @@ export default function DayList(){
     <div>
 
       새로 만든 리듀서
-      {postRedux}
       <button onClick={()=>{dispatch(addWord('postListSlice addWork action'))}}>밸류 체인지</button>
       <br />
       <button onClick={()=>{dispatch(asyncValue())}}>보드 리듀서</button>
