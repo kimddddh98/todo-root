@@ -1,0 +1,113 @@
+
+
+.menu{
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  padding: 0 30px;
+  a{
+    @include flexCenter;
+    height: 40px;
+    padding: 20px;
+    border: 1px solid $mainColor;
+    border-radius: 8px;
+    &:hover{
+      background: $mainColor;
+    }
+
+  }
+}
+.todo_table{
+  width: 90%;
+  max-width: 1000px;
+  margin: 30px auto ;
+  border-collapse: collapse;
+  border-top: 1px solid #e3e3e3;
+
+  td,th{
+    border-bottom: 1px solid #e3e3e3;
+    height: 50px;
+
+  }
+  tbody{
+    th{
+      font-weight: 400;
+    }
+    td{
+      &:hover{
+        a{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.detail_wrap{
+  width: 90%;
+  margin: 30px auto;
+  &>h2{
+    border-top: 1px solid #eee;
+    padding: 20px;
+  }
+  &>p{
+    border-top: 1px solid #eee;
+    padding: 20px;
+  }
+  
+  .view_content{
+    border-top: 1px solid #eee;
+    padding: 50px 20px;
+  }
+}
+.reply_wrap{
+  margin: 30px 0;
+  ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  form{
+    padding: 20px 0 ;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &>div{
+      display: flex;
+      gap: 30px;
+    }
+    label{
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+  textarea{
+    width: 50%;
+  }
+}
+.btn-type-1{
+  width: 100px;
+  padding: 10px;
+  border:1px solid #eee;
+  @include flexCenter;
+}
+input{
+  border: 1px solid #eee;
+
+}
+
+.write_from{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  label{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+  }
+}

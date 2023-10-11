@@ -1,7 +1,9 @@
 // import './App.css'
 // import '@/assets/main.scss'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
+
 import Header from '@/components/Header'
+import Main from '@/components/Main'
 import DayList from './components/DayList'
 import Day from './components/Day'
 import EmptyPage from '@/components/EmptyPage'
@@ -22,6 +24,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header></Header>
+        <Main></Main>
+        {/* <Header></Header>
         <Routes>
           <Route path='/' element={<DayList />}>
           </Route>
@@ -36,7 +40,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/redux' element={<ReduxIndex/>}/>
           <Route path="*" element={<EmptyPage/>} />
-        </Routes>
+        </Routes> */}
       </div>
     </BrowserRouter>
   )

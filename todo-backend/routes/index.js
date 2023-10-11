@@ -6,12 +6,23 @@ const { auth } = require('../middleware/auth')
 
 const AuthRouter = require('./Auth')
 const BoardRouter = require('./Board')
+const TodoRouter = require('./Todo')
 
-// board 요청
+// board
 router.use('/board',BoardRouter)
+router.use('/todo',TodoRouter)
+
+
 
 // auth 요창
 router.use('/auth', AuthRouter)
+
+router.post('/push',(req,res)=>{
+  console.log(req.body)
+  return res.json({
+    mes:'성공'
+  })
+})
 
 
 router.get('/test', async (req, res) => {
@@ -84,7 +95,5 @@ router.get('/logout',auth,async (req,res)=>{
     res.json({success:false})
   }
 })
-
-
 
 module.exports = router;
